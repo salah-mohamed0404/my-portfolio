@@ -13,6 +13,22 @@ import Footer from "@/components/common/Footer/index.astro";
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Salah Mohamed | Portfolio</title>
+		<script is:inline>
+			(function () {
+				const STORAGE_KEY = "theme";
+				const saved = localStorage.getItem(STORAGE_KEY);
+				const theme =
+					saved === "dark" || saved === "light"
+						? saved
+						: matchMedia("(prefers-color-scheme: dark)").matches
+							? "dark"
+							: "light";
+
+				if (theme === "dark") {
+					document.documentElement.classList.add("dark");
+				}
+			})();
+		</script>
 	</head>
 	<body>
 		<NavBar />
