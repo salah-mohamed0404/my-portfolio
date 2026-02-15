@@ -64,6 +64,8 @@ import ThemeToggle from "./ThemeToggle";
 </style>
 
 <script>
+	import { Throttler } from "@tanstack/pacer";
+
 	const navbar = document.getElementById("navbar");
 	if (navbar) {
 		const onScroll = () => {
@@ -73,7 +75,16 @@ import ThemeToggle from "./ThemeToggle";
 				navbar.classList.remove("scrolled");
 			}
 		};
+
+		const scrollThrottler = new Throttler(onScroll, {
+			wait: 100,
+			leading: true,
+			trailing: true,
+		});
+
 		onScroll();
-		window.addEventListener("scroll", onScroll, { passive: true });
+		window.addEventListener("scroll", () => scrollThrottler.maybeExecute(), {
+			passive: true,
+		});
 	}
 </script>
