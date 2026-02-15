@@ -1,0 +1,79 @@
+---
+import DesktopNav from "./DesktopNav";
+import MobileNav from "./MobileNav";
+import ThemeToggle from "./ThemeToggle";
+---
+
+<header
+	class="navbar-header fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4"
+>
+	<nav
+		id="navbar"
+		class="flex w-full max-w-4xl items-center justify-between rounded-full px-3 py-2 transition-all duration-500 border border-transparent bg-background/40 backdrop-blur-md"
+	>
+		<!-- Logo -->
+		<a
+			href="#home"
+			class="relative flex h-10 w-10 items-center justify-center rounded-full bg-primary font-heading text-sm font-bold text-primary-foreground"
+		>
+			S
+		</a>
+
+		<!-- Desktop pill nav -->
+		<DesktopNav client:load />
+
+		<!-- Right side actions -->
+		<div class="flex items-center gap-2">
+			<ThemeToggle client:load />
+
+			<a
+				href="#contact"
+				class="hidden rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-all hover:opacity-80 md:inline-block"
+			>
+				Let's Talk
+			</a>
+
+			<MobileNav client:media="(max-width: 767px)" />
+		</div>
+	</nav>
+</header>
+
+<style>
+	@keyframes navbar-slide-down {
+		from {
+			transform: translateY(-100px);
+		}
+		to {
+			transform: translateY(0);
+		}
+	}
+
+	.navbar-header {
+		animation: navbar-slide-down 0.6s ease-out both;
+	}
+
+	:global(#navbar.scrolled) {
+		border-color: var(--border);
+		background-color: color-mix(in oklch, var(--background) 70%, transparent);
+		box-shadow:
+			0 10px 15px -3px rgb(0 0 0 / 0.05),
+			0 4px 6px -4px rgb(0 0 0 / 0.05);
+		backdrop-filter: blur(24px);
+		-webkit-backdrop-filter: blur(24px);
+	}
+</style>
+
+<script>
+	const navbar = document.getElementById("navbar");
+	if (navbar) {
+		const onScroll = () => {
+			if (window.scrollY > 50) {
+				navbar.classList.add("scrolled");
+			} else {
+				navbar.classList.remove("scrolled");
+			}
+		};
+		onScroll();
+		window.addEventListener("scroll", onScroll, { passive: true });
+	}
+</script>

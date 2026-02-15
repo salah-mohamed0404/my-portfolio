@@ -1,0 +1,16 @@
+---
+import { NAV_LINKS } from "@/constants/nav-links";
+---
+
+<nav class="flex flex-wrap justify-center gap-6">
+	{
+		NAV_LINKS.map((link) => (
+			<a
+				href={link.href}
+				class="text-sm text-muted-foreground transition-colors hover:text-primary"
+			>
+				{link.label}
+			</a>
+		))
+	}
+</nav>
