@@ -1,19 +1,26 @@
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { QabilahIcon } from "@/assets/icons/QabilahIcon";
+import { CONTACT_INFO } from "./contact-info";
 
 export const SOCIAL_MEDIA = [
 	{
-		icon: FiGithub,
-		href: "https://github.com/salah-mohamed0404",
-		label: "GitHub",
+		icon: FiLinkedin,
+		href: CONTACT_INFO.linkedin,
+		label: "linkedIn",
 	},
 	{
-		icon: FiLinkedin,
-		href: "https://linkedin.com/in/salah-mohamed0404",
-		label: "LinkedIn",
+		icon: QabilahIcon,
+		href: CONTACT_INFO.qabilah,
+		label: "qabilah",
+	},
+	{
+		icon: FiGithub,
+		href: CONTACT_INFO.github,
+		label: "gitHub",
 	},
 	{
 		icon: FiMail,
-		href: "mailto:salah.mohamed0404@gmail.com",
-		label: "Email",
+		href: `mailto:${CONTACT_INFO.email}`,
+		label: "email",
 	},
 ] as const;
