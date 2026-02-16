@@ -1,6 +1,14 @@
 ---
 import { Image } from "astro:assets";
 import profileImg from "@/assets/images/salah/me-cropped.jpg";
+import { FiLinkedin, FiCode } from "react-icons/fi";
+import { PERSONAL_STATS } from "@/constants/personal-stats";
+import { CONTACT_INFO } from "@/constants/contact-info";
+
+const formatFollowers = (count: number) => {
+	if (count >= 1000) return `${Math.floor(count / 1000)}K+`;
+	return count.toString();
+};
 ---
 
 <div
@@ -21,5 +29,57 @@ import profileImg from "@/assets/images/salah/me-cropped.jpg";
 			alt="Salah Mohamed"
 			class="relative z-10 max-h-64 max-w-64 size-full aspect-square rounded-full border-2 border-primary/30 object-cover shadow-2xl sm:max-h-80 sm:max-w-80"
 		/>
+
+		<!-- Stat Badges -->
+		<div
+			class="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2"
+		>
+			<!-- LinkedIn Followers Badge -->
+			<a
+				data-aos="fade-up"
+				data-aos-delay="800"
+				data-aos-duration="600"
+				data-aos-once="true"
+				data-aos-easing="ease-out-cubic"
+				href={CONTACT_INFO.linkedin}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="group flex items-center gap-2 rounded-full py-1.5 pl-2 pr-3.5 glass shadow-lg shadow-black/5 dark:shadow-black/20 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl"
+			>
+				<span
+					class="flex items-center justify-center size-6 rounded-full bg-[#0A66C2] shadow-sm shadow-[#0A66C2]/25"
+				>
+					<FiLinkedin className="size-3.5 text-transparent fill-white" />
+				</span>
+
+				<span
+					class="text-xs font-semibold text-foreground/80 group-hover:text-foreground whitespace-nowrap tracking-wide transition-colors duration-300"
+				>
+					{formatFollowers(PERSONAL_STATS.linkedinFollowers)} Followers
+				</span>
+			</a>
+
+			<!-- Years of Experience Badge -->
+			<div
+				data-aos="fade-up"
+				data-aos-delay="950"
+				data-aos-duration="600"
+				data-aos-once="true"
+				data-aos-easing="ease-out-cubic"
+				class="group flex items-center gap-2 rounded-full py-1.5 pl-2 pr-3.5 glass shadow-lg shadow-black/5 dark:shadow-black/20 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl"
+			>
+				<span
+					class="flex items-center justify-center size-6 rounded-full bg-primary shadow-sm shadow-primary/25"
+				>
+					<FiCode className="size-3.5 text-primary-foreground" />
+				</span>
+
+				<span
+					class="text-xs font-semibold text-foreground/80 group-hover:text-foreground whitespace-nowrap tracking-wide transition-colors duration-300"
+				>
+					{PERSONAL_STATS.yearsOfExperience}+ Years
+				</span>
+			</div>
+		</div>
 	</div>
 </div>
