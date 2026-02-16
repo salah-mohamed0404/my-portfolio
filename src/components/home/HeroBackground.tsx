@@ -57,7 +57,7 @@ export default function HeroBackground() {
 				<div className="absolute top-1/2 right-1/4 h-[300px] w-[300px] rounded-full bg-primary/10 blur-[80px]" />
 
 				{/* Bottom fade */}
-				<div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+				<div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-background" />
 			</div>
 		);
 	}
