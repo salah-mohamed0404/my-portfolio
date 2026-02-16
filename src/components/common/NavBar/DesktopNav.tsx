@@ -1,37 +1,38 @@
-import { motion } from "motion/react";
+import { useState, useCallback } from "react";
 import { NAV_LINKS } from "@/constants/nav-links";
 import { useActiveSection } from "./useActiveSection";
+import { DesktopNavLink } from "./DesktopNavLink";
 
 export default function DesktopNav() {
 	const activeSection = useActiveSection();
+	const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+
+	const handleMouseEnter = useCallback((href: string) => {
+		setHoveredLink(href);
+	}, []);
+
+	const handleMouseLeave = useCallback(() => {
+		setHoveredLink(null);
+	}, []);
 
 	return (
-		<div className="hidden items-center gap-1 md:flex">
+		<div className="hidden items-center md:flex">
 			{NAV_LINKS.map((link) => {
 				const isActive = activeSection === link.href.slice(1);
+				// Show pill on hovered link if hovering, otherwise on active link
+				const showIndicator = hoveredLink
+					? hoveredLink === link.href
+					: isActive;
+
 				return (
-					<a
+					<DesktopNavLink
 						key={link.href}
 						href={link.href}
-						className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-							isActive
-								? "text-primary-foreground"
-								: "text-muted-foreground hover:text-foreground"
-						}`}
-					>
-						{isActive && (
-							<motion.span
-								layoutId="pill-indicator"
-								className="absolute inset-0 rounded-full bg-primary"
-								transition={{
-									type: "spring",
-									bounce: 0.2,
-									duration: 0.6,
-								}}
-							/>
-						)}
-						<span className="relative z-10">{link.label}</span>
-					</a>
+						label={link.label}
+						showIndicator={showIndicator}
+						onMouseEnter={() => handleMouseEnter(link.href)}
+						onMouseLeave={handleMouseLeave}
+					/>
 				);
 			})}
 		</div>
