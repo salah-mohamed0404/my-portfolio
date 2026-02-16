@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import profileImg from "@/assets/images/salah/me-cropped.jpg";
+---
+
+<div
+	data-aos="zoom-in"
+	data-aos-delay="400"
+	data-aos-duration="600"
+	data-aos-once="true"
+	data-aos-easing="ease-out-cubic"
+	class="shrink-0"
+>
+	<div class="relative">
+		<div
+			class="absolute -inset-1 rounded-full bg-linear-to-br from-primary/40 to-primary/10 blur-2xl"
+		>
+		</div>
+		<Image
+			src={profileImg}
+			alt="Salah Mohamed"
+			class="relative z-10 max-h-64 max-w-64 size-full aspect-square rounded-full border-2 border-primary/30 object-cover shadow-2xl sm:max-h-80 sm:max-w-80"
+		/>
+	</div>
+</div>
