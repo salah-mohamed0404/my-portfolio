@@ -1,3 +1,7 @@
+---
+import { SOCIAL_MEDIA } from "@/constants/social-media";
+---
+
 <div class="flex-1 text-center md:text-left">
 	<p
 		data-aos="fade-up"
@@ -54,5 +58,25 @@
 		>
 			Contact Me
 		</a>
+	</div>
+	<div
+		data-aos="fade-up"
+		data-aos-delay="900"
+		data-aos-duration="600"
+		data-aos-once="true"
+		data-aos-easing="ease-out-cubic"
+		class="mt-6 flex gap-3 justify-center md:justify-start"
+	>
+		{SOCIAL_MEDIA.map((social) => (
+			<a
+				href={social.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label={social.label}
+				class="flex items-center justify-center size-10 rounded-full glass shadow-md transition-all duration-300 hover:scale-[1.05] hover:shadow-xl text-muted-foreground hover:text-foreground"
+			>
+				<social.icon className="size-4" />
+			</a>
+		))}
 	</div>
 </div>
