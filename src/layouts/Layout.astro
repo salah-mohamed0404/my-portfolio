@@ -1,5 +1,7 @@
 ---
 import "@/styles/global.css";
+import "aos/dist/aos.css";
+
 import NavBar from "@/components/common/NavBar/index.astro";
 import Footer from "@/components/common/Footer/index.astro";
 ---
@@ -28,6 +30,10 @@ import Footer from "@/components/common/Footer/index.astro";
 					document.documentElement.classList.add("dark");
 				}
 			})();
+		</script>
+		<script>
+			import AOS from "aos";
+			AOS.init();
 		</script>
 	</head>
 	<body>
