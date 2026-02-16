@@ -24,7 +24,7 @@ export default function ThemeToggle() {
 			className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-border text-foreground transition-colors hover:bg-secondary"
 			aria-label="Toggle theme"
 		>
-			<ThemeIcon icon={isDark ? "moon" : "sun"} />
+			<ThemeIcon icon={isDark ? "sun" : "moon"} />
 		</button>
 	);
 }
