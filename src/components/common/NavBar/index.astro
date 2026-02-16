@@ -9,7 +9,8 @@ import ThemeToggle from "./ThemeToggle";
 >
 	<nav
 		id="navbar"
-		class="flex w-full max-w-4xl items-center justify-between rounded-full px-3 py-2 transition-all duration-500 border border-transparent bg-background/40 backdrop-blur-md"
+		class="flex w-full max-w-4xl items-center justify-between rounded-full px-3 py-2 transition-all duration-500 border border-transparent backdrop-blur-md will-change-[shadow]"
+		style="background-color: oklch(from var(--background) l c h / 0.2);"
 	>
 		<!-- Logo -->
 		<a
@@ -54,12 +55,9 @@ import ThemeToggle from "./ThemeToggle";
 
 	:global(#navbar.scrolled) {
 		border-color: var(--border);
-		background-color: color-mix(in oklch, var(--background) 70%, transparent);
 		box-shadow:
 			0 10px 15px -3px rgb(0 0 0 / 0.05),
 			0 4px 6px -4px rgb(0 0 0 / 0.05);
-		backdrop-filter: blur(24px);
-		-webkit-backdrop-filter: blur(24px);
 	}
 </style>
 
