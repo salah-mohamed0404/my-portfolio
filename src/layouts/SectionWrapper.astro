@@ -1,7 +1,11 @@
 ---
+import { cn } from "@/lib/shadcnUtils";
+
 // SectionWrapper - wraps content within sections with consistent max-width and padding
+
+const { className } = Astro.props;
 ---
 
-<div class="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-12 px-6 pt-24 md:flex-row md:gap-16 lg:px-24">
+<div class={cn("relative z-10 mx-auto container px-8 py-32", className)}>
 	<slot />
 </div>
