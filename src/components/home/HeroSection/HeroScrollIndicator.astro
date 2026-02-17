@@ -1,15 +1,17 @@
 ---
 import { FiArrowDown } from "react-icons/fi";
+import { AnimateOnView } from "@/components/ui/AnimateOnView";
 ---
 
-<div
-	data-aos="fade"
-	data-aos-delay="1200"
-	data-aos-duration="600"
-	data-aos-once="true"
-	data-aos-offset="100"
-	data-aos-easing="ease-out-cubic"
-	class="absolute bottom-16 left-1/2 z-10 -translate-x-1/2"
+<AnimateOnView
+	animation="fade"
+	delay={1200}
+	duration={600}
+	once
+	easing="ease-out-cubic"
+	offset={100}
+	className="absolute bottom-16 left-1/2 z-10 -translate-x-1/2"
+	client:load
 >
 	<a
 		href="#about"
@@ -18,4 +20,4 @@ import { FiArrowDown } from "react-icons/fi";
 		<span class="text-xs tracking-wider uppercase">Scroll</span>
 		<FiArrowDown size={16} className="animate-bounce" />
 	</a>
-</div>
+</AnimateOnView>

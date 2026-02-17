@@ -2,80 +2,117 @@
 import { SOCIAL_MEDIA } from "@/constants/social-media";
 import { buttonVariants } from "@/components/ui/button";
 import ExternalLink from "@/components/common/ExternalLink.astro";
+import { Highlighter } from "@/components/ui/highlighter";
+import { AnimateOnView } from "@/components/ui/AnimateOnView";
+import { TextAnimateIsland } from "@/components/ui/text-animate";
 ---
 
 <div class="flex-1 text-center md:text-left">
-	<p
-		data-aos="fade-up"
-		data-aos-delay="200"
-		data-aos-duration="600"
-		data-aos-once="true"
-		data-aos-easing="ease-out-cubic"
-		class="mb-4 text-sm font-medium font-heading tracking-widest uppercase text-primary"
+	<!-- Subtitle: TextAnimateIsland — word-by-word blurInUp -->
+	<TextAnimateIsland
+		text="- Front-End Developer"
+		as="p"
+		animation="blurInUp"
+		by="character"
+		delay={0.2}
+		once
+		className="mb-4 text-sm font-medium font-heading tracking-widest uppercase text-primary"
+		client:load
+	/>
+
+	<!-- Heading: AnimateOnView — contains Highlighter JSX -->
+	<AnimateOnView
+		animation="fade-up"
+		delay={300}
+		duration={600}
+		once
+		easing="ease-out-cubic"
+		client:load
 	>
-		- Front-End Developer
-	</p>
-	<h1
-		data-aos="fade-up"
-		data-aos-delay="300"
-		data-aos-duration="600"
-		data-aos-once="true"
-		data-aos-easing="ease-out-cubic"
-		class="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
-	>
-		Building Digital{" "}
-		<span class="text-gradient glow-text">Experiences</span>{" "}
-		that Matter
-	</h1>
-	<p
-		data-aos="fade-up"
-		data-aos-delay="500"
-		data-aos-duration="600"
-		data-aos-once="true"
-		data-aos-easing="ease-out-cubic"
-		class="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground md:text-xl"
-	>
-		Hi, I'm <span class="text-foreground font-semibold">Salah Mohamed</span>. I
-		craft high-performance, pixel-perfect web applications with React &
-		TypeScript. Passionate about clean code, scalable architecture, and
-		delightful user interfaces.
-	</p>
-	<div
-		data-aos="fade-up"
-		data-aos-delay="700"
-		data-aos-duration="600"
-		data-aos-once="true"
-		data-aos-easing="ease-out-cubic"
-		class="mt-8 flex flex-wrap *:max-w-44 *:w-full gap-4 justify-center md:justify-start"
-	>
-		<a href="#work" class={buttonVariants({ variant: "default", size: "lg" })}>
-			View My Work
-		</a>
-		<a
-			href="#contact"
-			class={buttonVariants({ variant: "secondary", size: "lg" })}
+		<h1
+			class="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
 		>
-			Contact Me
-		</a>
-	</div>
-	<div
-		data-aos="fade-up"
-		data-aos-delay="900"
-		data-aos-duration="600"
-		data-aos-once="true"
-		data-aos-easing="ease-out-cubic"
-		class="mt-6 flex gap-3 justify-center md:justify-start"
+			Building Digital{" "}
+			<Highlighter
+				action="underline"
+				color="var(--primary-500)"
+				className="text-gradient glow-text"
+				delay={1000}
+				client:load
+			>
+				Experiences
+			</Highlighter>{" "}
+			that Matter
+		</h1>
+	</AnimateOnView>
+
+	<!-- Description: AnimateOnView — preserves <span> bold on "Salah Mohamed" -->
+	<AnimateOnView
+		animation="fade-up"
+		delay={500}
+		duration={600}
+		once
+		easing="ease-out-cubic"
+		client:load
 	>
-		{
-			SOCIAL_MEDIA.map((social) => (
-				<ExternalLink
-					href={social.href}
-					label={social.label}
-					icon={social.icon}
-				>
-					<social.icon className="size-4" />
-				</ExternalLink>
-			))
-		}
-	</div>
+		<p
+			class="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground md:text-xl"
+		>
+			Hi, I'm <span class="text-foreground font-semibold">Salah Mohamed</span>.
+			I craft high-performance, pixel-perfect web applications with React &
+			TypeScript. Passionate about clean code, scalable architecture, and
+			delightful user interfaces.
+		</p>
+	</AnimateOnView>
+
+	<!-- CTA Buttons: AnimateOnView -->
+	<AnimateOnView
+		animation="fade-up"
+		delay={700}
+		duration={600}
+		once
+		easing="ease-out-cubic"
+		client:load
+	>
+		<div
+			class="mt-8 flex flex-wrap *:max-w-44 *:w-full gap-4 justify-center md:justify-start"
+		>
+			<a
+				href="#work"
+				class={buttonVariants({ variant: "default", size: "lg" })}
+			>
+				View My Work
+			</a>
+			<a
+				href="#contact"
+				class={buttonVariants({ variant: "secondary", size: "lg" })}
+			>
+				Contact Me
+			</a>
+		</div>
+	</AnimateOnView>
+
+	<!-- Social Links: AnimateOnView -->
+	<AnimateOnView
+		animation="fade-up"
+		delay={900}
+		duration={600}
+		once
+		easing="ease-out-cubic"
+		client:load
+	>
+		<div class="mt-6 flex gap-3 justify-center md:justify-start">
+			{
+				SOCIAL_MEDIA.map((social) => (
+					<ExternalLink
+						href={social.href}
+						label={social.label}
+						icon={social.icon}
+					>
+						<social.icon className="size-4" />
+					</ExternalLink>
+				))
+			}
+		</div>
+	</AnimateOnView>
 </div>
