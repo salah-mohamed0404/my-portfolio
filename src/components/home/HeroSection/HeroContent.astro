@@ -1,5 +1,7 @@
 ---
 import { SOCIAL_MEDIA } from "@/constants/social-media";
+import { buttonVariants } from "@/components/ui/button";
+import ExternalLink from "@/components/common/ExternalLink.astro";
 ---
 
 <div class="flex-1 text-center md:text-left">
@@ -9,9 +11,9 @@ import { SOCIAL_MEDIA } from "@/constants/social-media";
 		data-aos-duration="600"
 		data-aos-once="true"
 		data-aos-easing="ease-out-cubic"
-		class="mb-4 text-sm font-medium tracking-widest uppercase text-primary"
+		class="mb-4 text-sm font-medium font-heading tracking-widest uppercase text-primary"
 	>
-		Front-End Developer
+		- Front-End Developer
 	</p>
 	<h1
 		data-aos="fade-up"
@@ -44,17 +46,14 @@ import { SOCIAL_MEDIA } from "@/constants/social-media";
 		data-aos-duration="600"
 		data-aos-once="true"
 		data-aos-easing="ease-out-cubic"
-		class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start"
+		class="mt-8 flex flex-wrap *:max-w-44 *:w-full gap-4 justify-center md:justify-start"
 	>
-		<a
-			href="#work"
-			class="rounded-lg bg-primary px-7 py-3 font-semibold text-primary-foreground transition-all hover:opacity-90 glow"
-		>
+		<a href="#work" class={buttonVariants({ variant: "default", size: "lg" })}>
 			View My Work
 		</a>
 		<a
 			href="#contact"
-			class="rounded-lg border border-border bg-secondary px-7 py-3 font-semibold text-secondary-foreground transition-all hover:bg-muted"
+			class={buttonVariants({ variant: "secondary", size: "lg" })}
 		>
 			Contact Me
 		</a>
@@ -67,16 +66,16 @@ import { SOCIAL_MEDIA } from "@/constants/social-media";
 		data-aos-easing="ease-out-cubic"
 		class="mt-6 flex gap-3 justify-center md:justify-start"
 	>
-		{SOCIAL_MEDIA.map((social) => (
-			<a
-				href={social.href}
-				target="_blank"
-				rel="noopener noreferrer"
-				aria-label={social.label}
-				class="flex items-center justify-center size-10 rounded-full glass shadow-md transition-all duration-300 hover:scale-[1.05] hover:shadow-xl text-muted-foreground hover:text-foreground"
-			>
-				<social.icon className="size-4" />
-			</a>
-		))}
+		{
+			SOCIAL_MEDIA.map((social) => (
+				<ExternalLink
+					href={social.href}
+					label={social.label}
+					icon={social.icon}
+				>
+					<social.icon className="size-4" />
+				</ExternalLink>
+			))
+		}
 	</div>
 </div>

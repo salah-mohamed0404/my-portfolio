@@ -2,6 +2,7 @@
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import ThemeToggle from "./ThemeToggle";
+import { buttonVariants } from "@/components/ui/button";
 ---
 
 <header
@@ -29,7 +30,7 @@ import ThemeToggle from "./ThemeToggle";
 
 			<a
 				href="#contact"
-				class="hidden rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-all hover:opacity-80 md:inline-block"
+				class={`${buttonVariants({ variant: "default", size: "sm" })} hidden md:inline-flex`}
 			>
 				Let's Talk
 			</a>

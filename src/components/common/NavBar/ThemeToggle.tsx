@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { isDark as checkIsDark, toggleTheme } from "@/lib/theme";
 import ThemeIcon from "./ThemeIcon";
+import { Button } from "@/components/ui/button";
 
 export default function ThemeToggle() {
 	const [isDark, setIsDark] = useState(false);
@@ -19,12 +20,14 @@ export default function ThemeToggle() {
 	if (!mounted) return null;
 
 	return (
-		<button
+		<Button
 			onClick={toggle}
-			className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-border text-foreground transition-colors hover:bg-secondary"
+			variant="outline"
+			size="icon"
 			aria-label="Toggle theme"
+			title="Toggle theme"
 		>
 			<ThemeIcon icon={isDark ? "sun" : "moon"} />
-		</button>
+		</Button>
 	);
 }

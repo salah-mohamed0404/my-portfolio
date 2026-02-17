@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/constants/nav-links";
 import { useActiveSection } from "./useActiveSection";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 export default function MobileNav() {
 	const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,13 +22,15 @@ export default function MobileNav() {
 
 	return (
 		<>
-			<button
+			<Button
 				onClick={() => setMobileOpen(!mobileOpen)}
-				className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground md:hidden"
+				variant="outline"
+				size="icon"
+				className="md:hidden"
 				aria-label="Toggle menu"
 			>
 				{mobileOpen ? <X size={18} /> : <Menu size={18} />}
-			</button>
+			</Button>
 
 			<AnimatePresence>
 				{mobileOpen && (
@@ -61,7 +64,7 @@ export default function MobileNav() {
 						<a
 							href="#contact"
 							onClick={() => setMobileOpen(false)}
-							className="mt-4 rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90"
+							className={`mt-4 ${buttonVariants({ variant: "default" })}`}
 						>
 							{"Let's Talk"}
 						</a>
