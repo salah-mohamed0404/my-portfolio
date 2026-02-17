@@ -2,54 +2,33 @@
 import { SOCIAL_MEDIA } from "@/constants/social-media";
 import { buttonVariants } from "@/components/ui/button";
 import ExternalLink from "@/components/common/ExternalLink.astro";
-import { Highlighter } from "@/components/ui/highlighter";
 import { AnimateOnView } from "@/components/ui/AnimateOnView";
-import { TextAnimateIsland } from "@/components/ui/text-animate";
+import { HeroHeading } from "./HeroHeading";
 ---
 
 <div class="flex-1 text-center md:text-left">
 	<!-- Subtitle: TextAnimateIsland — word-by-word blurInUp -->
-	<TextAnimateIsland
-		text="- Front-End Developer"
-		as="p"
-		animation="blurInUp"
-		by="character"
-		delay={0.2}
-		once
-		className="mb-4 text-sm font-medium font-heading tracking-widest uppercase text-primary"
-		client:load
-	/>
-
-	<!-- Heading: AnimateOnView — contains Highlighter JSX -->
 	<AnimateOnView
 		animation="fade-up"
-		delay={300}
-		duration={600}
+		delay={50}
+		duration={500}
 		once
 		easing="ease-out-cubic"
 		client:load
 	>
-		<h1
-			class="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
+		<p
+			class="mb-4 text-sm font-medium font-heading tracking-widest uppercase text-primary"
 		>
-			Building Digital{" "}
-			<Highlighter
-				action="underline"
-				color="var(--primary-500)"
-				className="text-gradient glow-text"
-				delay={1000}
-				client:load
-			>
-				Experiences
-			</Highlighter>{" "}
-			that Matter
-		</h1>
+			- Front-End Developer
+		</p>
 	</AnimateOnView>
+	<!-- Heading: single React island — coordinates all three segments via variant propagation -->
+	<HeroHeading client:load />
 
 	<!-- Description: AnimateOnView — preserves <span> bold on "Salah Mohamed" -->
 	<AnimateOnView
 		animation="fade-up"
-		delay={500}
+		delay={1100}
 		duration={600}
 		once
 		easing="ease-out-cubic"
@@ -68,8 +47,8 @@ import { TextAnimateIsland } from "@/components/ui/text-animate";
 	<!-- CTA Buttons: AnimateOnView -->
 	<AnimateOnView
 		animation="fade-up"
-		delay={700}
-		duration={600}
+		delay={1350}
+		duration={500}
 		once
 		easing="ease-out-cubic"
 		client:load
@@ -92,18 +71,18 @@ import { TextAnimateIsland } from "@/components/ui/text-animate";
 		</div>
 	</AnimateOnView>
 
-	<!-- Social Links: AnimateOnView -->
-	<AnimateOnView
-		animation="fade-up"
-		delay={900}
-		duration={600}
-		once
-		easing="ease-out-cubic"
-		client:load
-	>
-		<div class="mt-6 flex gap-3 justify-center md:justify-start">
-			{
-				SOCIAL_MEDIA.map((social) => (
+	<!-- Social Links: staggered AnimateOnView per icon -->
+	<div class="mt-6 flex gap-3 justify-center md:justify-start">
+		{
+			SOCIAL_MEDIA.map((social, index) => (
+				<AnimateOnView
+					animation="fade-up"
+					delay={1550 + index * 100}
+					duration={400}
+					once
+					easing="ease-out-cubic"
+					client:load
+				>
 					<ExternalLink
 						href={social.href}
 						label={social.label}
@@ -111,8 +90,8 @@ import { TextAnimateIsland } from "@/components/ui/text-animate";
 					>
 						<social.icon className="size-4" />
 					</ExternalLink>
-				))
-			}
-		</div>
-	</AnimateOnView>
+				</AnimateOnView>
+			))
+		}
+	</div>
 </div>

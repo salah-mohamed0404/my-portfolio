@@ -57,43 +57,114 @@ const easingMap: Record<string, string | number[]> = {
 };
 
 // AOS animation name → { hidden, show } variants
-const animationVariants: Record<AOSAnimation, { hidden: object; show: object }> = {
+const animationVariants: Record<
+	AOSAnimation,
+	{ hidden: object; show: object }
+> = {
 	// Fade
 	fade: { hidden: { opacity: 0 }, show: { opacity: 1 } },
 	"fade-up": { hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0 } },
 	"fade-down": { hidden: { opacity: 0, y: -40 }, show: { opacity: 1, y: 0 } },
 	"fade-left": { hidden: { opacity: 0, x: 40 }, show: { opacity: 1, x: 0 } },
 	"fade-right": { hidden: { opacity: 0, x: -40 }, show: { opacity: 1, x: 0 } },
-	"fade-up-right": { hidden: { opacity: 0, y: 40, x: 40 }, show: { opacity: 1, y: 0, x: 0 } },
-	"fade-up-left": { hidden: { opacity: 0, y: 40, x: -40 }, show: { opacity: 1, y: 0, x: 0 } },
-	"fade-down-right": { hidden: { opacity: 0, y: -40, x: 40 }, show: { opacity: 1, y: 0, x: 0 } },
-	"fade-down-left": { hidden: { opacity: 0, y: -40, x: -40 }, show: { opacity: 1, y: 0, x: 0 } },
+	"fade-up-right": {
+		hidden: { opacity: 0, y: 40, x: 40 },
+		show: { opacity: 1, y: 0, x: 0 },
+	},
+	"fade-up-left": {
+		hidden: { opacity: 0, y: 40, x: -40 },
+		show: { opacity: 1, y: 0, x: 0 },
+	},
+	"fade-down-right": {
+		hidden: { opacity: 0, y: -40, x: 40 },
+		show: { opacity: 1, y: 0, x: 0 },
+	},
+	"fade-down-left": {
+		hidden: { opacity: 0, y: -40, x: -40 },
+		show: { opacity: 1, y: 0, x: 0 },
+	},
 	// Flip
-	"flip-up": { hidden: { opacity: 0, rotateX: 90 }, show: { opacity: 1, rotateX: 0 } },
-	"flip-down": { hidden: { opacity: 0, rotateX: -90 }, show: { opacity: 1, rotateX: 0 } },
-	"flip-left": { hidden: { opacity: 0, rotateY: 90 }, show: { opacity: 1, rotateY: 0 } },
-	"flip-right": { hidden: { opacity: 0, rotateY: -90 }, show: { opacity: 1, rotateY: 0 } },
+	"flip-up": {
+		hidden: { opacity: 0, rotateX: 90 },
+		show: { opacity: 1, rotateX: 0 },
+	},
+	"flip-down": {
+		hidden: { opacity: 0, rotateX: -90 },
+		show: { opacity: 1, rotateX: 0 },
+	},
+	"flip-left": {
+		hidden: { opacity: 0, rotateY: 90 },
+		show: { opacity: 1, rotateY: 0 },
+	},
+	"flip-right": {
+		hidden: { opacity: 0, rotateY: -90 },
+		show: { opacity: 1, rotateY: 0 },
+	},
 	// Zoom in
-	"zoom-in": { hidden: { opacity: 0, scale: 0.6 }, show: { opacity: 1, scale: 1 } },
-	"zoom-in-up": { hidden: { opacity: 0, scale: 0.6, y: 40 }, show: { opacity: 1, scale: 1, y: 0 } },
-	"zoom-in-down": { hidden: { opacity: 0, scale: 0.6, y: -40 }, show: { opacity: 1, scale: 1, y: 0 } },
-	"zoom-in-left": { hidden: { opacity: 0, scale: 0.6, x: 40 }, show: { opacity: 1, scale: 1, x: 0 } },
-	"zoom-in-right": { hidden: { opacity: 0, scale: 0.6, x: -40 }, show: { opacity: 1, scale: 1, x: 0 } },
+	"zoom-in": {
+		hidden: { opacity: 0, scale: 0.6 },
+		show: { opacity: 1, scale: 1 },
+	},
+	"zoom-in-up": {
+		hidden: { opacity: 0, scale: 0.6, y: 40 },
+		show: { opacity: 1, scale: 1, y: 0 },
+	},
+	"zoom-in-down": {
+		hidden: { opacity: 0, scale: 0.6, y: -40 },
+		show: { opacity: 1, scale: 1, y: 0 },
+	},
+	"zoom-in-left": {
+		hidden: { opacity: 0, scale: 0.6, x: 40 },
+		show: { opacity: 1, scale: 1, x: 0 },
+	},
+	"zoom-in-right": {
+		hidden: { opacity: 0, scale: 0.6, x: -40 },
+		show: { opacity: 1, scale: 1, x: 0 },
+	},
 	// Zoom out
-	"zoom-out": { hidden: { opacity: 0, scale: 1.2 }, show: { opacity: 1, scale: 1 } },
-	"zoom-out-up": { hidden: { opacity: 0, scale: 1.2, y: -40 }, show: { opacity: 1, scale: 1, y: 0 } },
-	"zoom-out-down": { hidden: { opacity: 0, scale: 1.2, y: 40 }, show: { opacity: 1, scale: 1, y: 0 } },
-	"zoom-out-left": { hidden: { opacity: 0, scale: 1.2, x: -40 }, show: { opacity: 1, scale: 1, x: 0 } },
-	"zoom-out-right": { hidden: { opacity: 0, scale: 1.2, x: 40 }, show: { opacity: 1, scale: 1, x: 0 } },
+	"zoom-out": {
+		hidden: { opacity: 0, scale: 1.2 },
+		show: { opacity: 1, scale: 1 },
+	},
+	"zoom-out-up": {
+		hidden: { opacity: 0, scale: 1.2, y: -40 },
+		show: { opacity: 1, scale: 1, y: 0 },
+	},
+	"zoom-out-down": {
+		hidden: { opacity: 0, scale: 1.2, y: 40 },
+		show: { opacity: 1, scale: 1, y: 0 },
+	},
+	"zoom-out-left": {
+		hidden: { opacity: 0, scale: 1.2, x: -40 },
+		show: { opacity: 1, scale: 1, x: 0 },
+	},
+	"zoom-out-right": {
+		hidden: { opacity: 0, scale: 1.2, x: 40 },
+		show: { opacity: 1, scale: 1, x: 0 },
+	},
 	// Slide (full-element translate, no opacity)
 	"slide-up": { hidden: { y: "100%", opacity: 0 }, show: { y: 0, opacity: 1 } },
-	"slide-down": { hidden: { y: "-100%", opacity: 0 }, show: { y: 0, opacity: 1 } },
-	"slide-left": { hidden: { x: "100%", opacity: 0 }, show: { x: 0, opacity: 1 } },
-	"slide-right": { hidden: { x: "-100%", opacity: 0 }, show: { x: 0, opacity: 1 } },
+	"slide-down": {
+		hidden: { y: "-100%", opacity: 0 },
+		show: { y: 0, opacity: 1 },
+	},
+	"slide-left": {
+		hidden: { x: "100%", opacity: 0 },
+		show: { x: 0, opacity: 1 },
+	},
+	"slide-right": {
+		hidden: { x: "-100%", opacity: 0 },
+		show: { x: 0, opacity: 1 },
+	},
 };
 
 // Flip animations need perspective to look 3D
-const needsPerspective = new Set<AOSAnimation>(["flip-up", "flip-down", "flip-left", "flip-right"]);
+const needsPerspective = new Set<AOSAnimation>([
+	"flip-up",
+	"flip-down",
+	"flip-left",
+	"flip-right",
+]);
 
 export function AnimateOnView({
 	children,
@@ -127,7 +198,9 @@ export function AnimateOnView({
 					},
 				},
 			}}
-			style={needsPerspective.has(animation) ? { perspective: 1200 } : undefined}
+			style={
+				needsPerspective.has(animation) ? { perspective: 1200 } : undefined
+			}
 			className={cn(className)}
 		>
 			{children}
