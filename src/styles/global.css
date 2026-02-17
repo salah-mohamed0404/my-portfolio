@@ -186,3 +186,10 @@
 		text-shadow: 0 0 20px hsl(160 84% 44% / 0.3);
 	}
 }
+
+::view-transition-old(root), ::view-transition-new(root) {
+    animation:
+		none;
+    mix-blend-mode:
+		normal;
+}

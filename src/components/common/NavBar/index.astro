@@ -1,7 +1,7 @@
 ---
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
-import ThemeToggle from "./ThemeToggle";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { buttonVariants } from "@/components/ui/button";
 ---
 
@@ -26,7 +26,7 @@ import { buttonVariants } from "@/components/ui/button";
 
 		<!-- Right side actions -->
 		<div class="flex items-center gap-2">
-			<ThemeToggle client:load />
+			<AnimatedThemeToggler client:load />
 
 			<a
 				href="#contact"
