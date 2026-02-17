@@ -1,0 +1,7 @@
+{
+	"tailwindCSS.experimental.classRegex": [
+		// Matches `cva` function
+		["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+	],
+	"cSpell.words": ["shadcn"]
+}
