@@ -1,0 +1,52 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/shadcnUtils";
+import { FiExternalLink } from "react-icons/fi";
+
+interface Props {
+	href: string;
+	label: string;
+	icon: React.ComponentType<{ className?: string }>;
+	showLabel?: boolean;
+	showExternalIcon?: boolean;
+	className?: string;
+	labelClassName?: string;
+	iconClassName?: string;
+	externalIconClassName?: string;
+}
+
+const {
+	href,
+	label,
+	icon: Icon,
+	showLabel = false,
+	showExternalIcon = false,
+	className = "",
+	labelClassName = "",
+	iconClassName = "",
+	externalIconClassName = "",
+} = Astro.props;
+---
+
+<a
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	aria-label={label}
+	title={label}
+	class={buttonVariants({
+		variant: "outline",
+		size: "icon",
+		className,
+	})}
+>
+	<Icon className={cn("size-4", iconClassName)} />
+	{showLabel && <span class={labelClassName}>{label}</span>}
+	{
+		showExternalIcon && (
+			<FiExternalLink
+				className={cn("size-4 text-primary-500", externalIconClassName)}
+			/>
+		)
+	}
+</a>
